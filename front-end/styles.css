@@ -18,3 +18,19 @@
     font-size: 2rem;
     color: #F2921D;
 }
+
+.food-widget{
+    position: absolute;
+    left: 8rem;
+    width: 30rem;
+}
+
+.fridge-image{
+    position: absolute;
+    right: 8rem;
+    width: 30rem;
+}
+
+.content{
+    margin-top: 15rem;
+}
