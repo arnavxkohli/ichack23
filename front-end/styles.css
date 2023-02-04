@@ -1,9 +1,13 @@
+body{
+    background-color: #f9f5ed;
+}
+
 .links{
     padding-left: 3rem;
 }
 
 .navbar{
-    background-color: #EDDBC7;
+    background-color: #400E32;
     height: 8rem;
 }
 
@@ -11,20 +15,25 @@
     padding: 0 2rem 0 2rem;
 }
 
-.navbar-brand{
-    padding-left: 5rem;
-    font-family: 'Rubik', sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
+.nav-link{
     color: #F2921D;
 }
 
-.food-widget{
-    left: 10rem;
-    bottom: 7rem;
-    position: relative;
-    display: inline-block;
-    width: 40rem;
+.nav-link:visited{
+    color: #f5b114;
+}
+
+.navbar-brand{
+    padding-left: 5rem;
+    font-family: 'Courgette', cursive;
+    font-size: 3rem;
+    color: #F2921D;
+}
+
+.navbar-brand:hover{
+    /* font-size: 3.1rem; */
+    color: #f2b21d;
+    /* opacity: 0.5; */
 }
 
 .generate-button{
@@ -32,14 +41,7 @@
     margin-left: 10rem;
 }
 
-.fridge-image{
-    left: 10rem;
-    display: inline-block;
-    position: relative;
-    width: 30rem;
-}
-
-.content{
+.container{
     margin-top: 15rem;
     min-height: calc(60vh - 40px);
 }
@@ -54,15 +56,60 @@ td{
 
 footer{
     margin: 0;
-    background-color: #EDDBC7;
-    height: 15rem;
+    background-color: #400E32;
+    height: 12rem;
 }
 
 .links{
-    margin-left: 35rem;
+    padding-top: 2%;
+    margin-left: 40%;
+    margin-right: 40%
+    /* margin: auto; */
+    float: left;
 }
 
 .footer-link{
+    /* text-align: center; */
+    height: 10%;
+    color: white;
+}
+
+.btn{
+    background-color: rgb(52, 58, 64);
+    margin-right: 12rem;
+}
+
+.btn:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+th{
+    padding: 0 2rem 0 2rem;
+}
+
+td{
+    padding: 2rem 2rem 2rem 2rem;
+}
+
+.company-name{
+    padding-top: 2.5rem;
     text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size : 2rem;
+    color: #e26c7e;
+}
+
+a{
+    color: #e26c7e;
+    text-decoration: inherit;
+}
+
+.fi{
+    padding: 0 1.5rem 0 1rem;
+    font-size: 1.5rem;
+}
+
+.fa-regular{
+    color: #F2921D;
 }
 
