@@ -9,7 +9,7 @@ class user_data(object):
         # self.inventory.set_index('Item', inplace=True)
 
     # code to add new item to the dataframe
-    def add_data(self, item, quantity, exp_date, status = "Unopened"):
+    def add_data(self, item, quantity, exp_date, status):
         # check if repeated item name
         if item in list(self.inventory["Item"]):
             item_id = 1
@@ -35,7 +35,7 @@ class user_data(object):
         # update item expiry status
         current_date = datetime.today()
         self.inventory["Expired"] = current_date > self.inventory["Expiration Date"]
-        self.inventory["Status"] = self.inventory["Expiration Date"] - current_date
+        self.inventory["Status"] = (self.inventory["Expiration Date"] - current_date).round("D")
 
     def del_data(self, item):
         self.inventory.drop(self.inventory[self.inventory["Item"]==item].index, inplace=True)
@@ -59,7 +59,7 @@ class user_data(object):
             output = output.head(n)
         
         output["Expiration Date"] = output["Expiration Date"].astype("string")
-        output["Status"] = output["Status"].round("D").astype("string")
+        output["Status"] = output["Status"].astype("string")
         return output.to_json(orient="split", index=False)
         
 
