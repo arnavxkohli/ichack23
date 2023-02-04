@@ -1,6 +1,5 @@
 # from sklearn import LinearRegression
 import pandas as pd
-import recommender
 from datetime import datetime
 
 column_names = ["Item","Quantity","Expiration Date", "Status", "Expired"]
@@ -43,6 +42,7 @@ class user_data(object):
     def mod_data(self, item, column, new_data):
         # modify existing data, specify item name, column of data to modify, and the new data
         self.inventory.loc[self.inventory["Item"]==item, column] = new_data
+        self.update()
 
     def use_quantity(self, item, quantity_used):
         quantity = self.inventory.loc[self.inventory["Item"]==item]["Quantity"]
@@ -52,14 +52,18 @@ class user_data(object):
         else:
             self.del_data(item)
     
-    def recommend(self):
-        # call the recommender API code
-        # input = self.inventory.head(5)["Item"].to_list()
-        pass
+    def top_items(self, n = 5):
+        output = self.inventory.head(n)
+        output["Expiration Date"] = output["Expiration Date"].astype("string")
+        return output.to_json(orient="split", index=False)
+        
 
 a = user_data()
 a.add_data("apple", 3, "15/11/2022", 0)
 a.add_data("apple", 4, "13/8/2022", 0)
+a.add_data("apple", 1, "15/11/2023", 0)
+a.add_data("apple", 3, "13/8/2022", 0)
 print(a.inventory)
-a.del_data("apple1")
-print(a.inventory)
+# a.del_data("apple1")
+# print(a.inventory)
+print(a.top_items())
