@@ -35,6 +35,7 @@ class user_data(object):
         # update item expiry status
         current_date = datetime.today()
         self.inventory["Expired"] = current_date > self.inventory["Expiration Date"]
+        self.inventory["Status"] = self.inventory["Expiration Date"] - current_date
 
     def del_data(self, item):
         self.inventory.drop(self.inventory[self.inventory["Item"]==item].index, inplace=True)
@@ -55,6 +56,7 @@ class user_data(object):
     def top_items(self, n = 5):
         output = self.inventory.head(n)
         output["Expiration Date"] = output["Expiration Date"].astype("string")
+        output["Status"] = output["Status"].round("D").astype("string")
         return output.to_json(orient="split", index=False)
         
 
