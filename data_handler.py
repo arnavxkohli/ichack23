@@ -37,8 +37,9 @@ class user_data(object):
         current_date = datetime.today()
         self.inventory["Expired"] = current_date > self.inventory["Expiration Date"]
 
-    def del_data(self, item):
-        self.inventory.drop(self.inventory[self.inventory["Item"]==item].index, inplace=True)
+    def del_data(self, item, quantity, exp_date, status):
+        # TODO: delete specific data from the dataframe
+        pass
 
     def mod_data(self, item, column, new_data):
         # modify existing data, specify item name, column of data to modify, and the new data
@@ -61,5 +62,5 @@ a = user_data()
 a.add_data("apple", 3, "15/11/2022", 0)
 a.add_data("apple", 4, "13/8/2022", 0)
 print(a.inventory)
-a.mod_data("apple1", "Item", "cherry")
+a.del_data("apple1")
 print(a.inventory)
