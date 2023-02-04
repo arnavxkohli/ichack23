@@ -1,16 +1,17 @@
 # from sklearn import LinearRegression
 import pandas as pd
 import recommender
-import datetime
+from datetime import datetime
 
-column_names = ["Item","Quantity","Expiration Date", "Status"]
+column_names = ["Item","Quantity","Expiration Date", "Status", "Expired"]
+# status: 0=fresh, -1=off, 1=opened
 class user_data(object):
     def __init__(self):
         self.inventory = pd.DataFrame(columns=column_names)
         # self.inventory.set_index('Item', inplace=True)
 
     # code to add new item to the dataframe
-    def add_data(self, item, quantity, exp_date, status = 0):
+    def add_data(self, item, quantity, exp_date, status = "Unopened"):
         # check if repeated item name
         if item in list(self.inventory["Item"]):
             item_id = 1
@@ -19,18 +20,23 @@ class user_data(object):
             item+=str(item_id)
         # add item
         tmp = pd.DataFrame({
-        "Item": [item],
-        "Quantity": [quantity],
-        "Expiration Date": [exp_date],
-        "Status": [status]})
+                            "Item": [item],
+                            "Quantity": [quantity],
+                            "Expiration Date": [exp_date],
+                            "Status": [status],
+                            "Expired": [False]
+                            })
         self.inventory = self.inventory.append(tmp, ignore_index=True)
-        self.sort()
+        self.update()
 
-    def sort(self):
+    def update(self):
         # sort the dataframe by exp_date (use date_time module)
         self.inventory['Expiration Date'] = pd.to_datetime(self.inventory['Expiration Date'])
         self.inventory.sort_values(by='Expiration Date', inplace = True)
 
+        # update item expiry status
+        current_date = datetime.today()
+        self.inventory["Expired"] = current_date > self.inventory["Expiration Date"]
 
     def del_data(self, item, quantity, exp_date, status):
         # TODO: delete specific data from the dataframe
