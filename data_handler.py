@@ -1,6 +1,4 @@
-# from sklearn import LinearRegression
 import pandas as pd
-import recommender
 from datetime import datetime
 
 column_names = ["Item","Quantity","Expiration Date", "Status", "Expired"]
@@ -10,7 +8,7 @@ class user_data(object):
         # self.inventory.set_index('Item', inplace=True)
 
     # code to add new item to the dataframe
-    def add_data(self, item, quantity, exp_date, status = "Unopened"):
+    def add_data(self, item, quantity, exp_date):
         # check if repeated item name
         if item in list(self.inventory["Item"]):
             item_id = 1
@@ -22,7 +20,7 @@ class user_data(object):
                             "Item": [item],
                             "Quantity": [quantity],
                             "Expiration Date": [exp_date],
-                            "Status": [status],
+                            "Status": [0], # we will update this when we call .update()
                             "Expired": [False]
                             })
         self.inventory = self.inventory.append(tmp, ignore_index=True)
@@ -36,6 +34,7 @@ class user_data(object):
         # update item expiry status
         current_date = datetime.today()
         self.inventory["Expired"] = current_date > self.inventory["Expiration Date"]
+        self.inventory["Status"] = (self.inventory["Expiration Date"] - current_date).round("D")
 
     def del_data(self, item):
         self.inventory.drop(self.inventory[self.inventory["Item"]==item].index, inplace=True)
@@ -43,6 +42,7 @@ class user_data(object):
     def mod_data(self, item, column, new_data):
         # modify existing data, specify item name, column of data to modify, and the new data
         self.inventory.loc[self.inventory["Item"]==item, column] = new_data
+        self.update()
 
     def use_quantity(self, item, quantity_used):
         quantity = self.inventory.loc[self.inventory["Item"]==item]["Quantity"]
@@ -52,14 +52,22 @@ class user_data(object):
         else:
             self.del_data(item)
     
-    def recommend(self):
-        # call the recommender API code
-        # input = self.inventory.head(5)["Item"].to_list()
-        pass
+    def top_items(self, n = None):
+        output = self.inventory
+        if n:
+            output = output.head(n)
+        
+        output["Expiration Date"] = output["Expiration Date"].astype("string")
+        output["Status"] = output["Status"].astype("string")
+        return output.to_json(orient="split", index=False)
+        
 
 a = user_data()
-a.add_data("apple", 3, "15/11/2022", 0)
-a.add_data("apple", 4, "13/8/2022", 0)
+a.add_data("apple", 3, "15/11/2022")
+a.add_data("apple", 4, "13/8/2022")
+a.add_data("apple", 1, "15/11/2023")
+a.add_data("apple", 3, "13/8/2022")
 print(a.inventory)
 a.del_data("apple1")
 print(a.inventory)
+print(a.top_items())
