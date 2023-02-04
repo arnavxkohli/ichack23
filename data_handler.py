@@ -9,8 +9,15 @@ class user_data(object):
         self.inventory = pd.DataFrame(columns=column_names)
         # self.inventory.set_index('Item', inplace=True)
 
+    # code to add new item to the dataframe
     def add_data(self, item, quantity, exp_date, status = 0):
-        # code to add new item to the dataframe
+        # check if repeated item name
+        if item in list(self.inventory["Item"]):
+            item_id = 1
+            while (item+str(item_id) in list(self.inventory["Item"])):
+                item_id += 1
+            item+=str(item_id)
+        # add item
         tmp = pd.DataFrame({
         "Item": [item],
         "Quantity": [quantity],
@@ -33,7 +40,7 @@ class user_data(object):
         # modify existing data, specify item name, column of data to modify, and the new data
         self.inventory.loc[self.inventory["Item"]==item, column] = new_data
 
-    # def use_quantity(self, item, , ):
+    # def use_quantity(self, item, quantity, quantity):
 
     
     def recommend(self):
@@ -43,7 +50,7 @@ class user_data(object):
 
 a = user_data()
 a.add_data("apple", 3, "15/11/2022", 0)
-a.add_data("pear", 4, "13/8/2022", 0)
+a.add_data("apple", 4, "13/8/2022", 0)
 print(a.inventory)
-a.mod_data("apple", "Item", "cherry")
+a.mod_data("apple1", "Item", "cherry")
 print(a.inventory)
