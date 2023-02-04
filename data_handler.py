@@ -55,7 +55,7 @@ class user_data(object):
     def recommend(self):
         # call the recommender API code
         # input = self.inventory.head(5)["Item"].to_list()
-
+        pass
 
 a = user_data()
 a.add_data("apple", 3, "15/11/2022", 0)
