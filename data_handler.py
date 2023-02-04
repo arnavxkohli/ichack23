@@ -53,8 +53,11 @@ class user_data(object):
         else:
             self.del_data(item)
     
-    def top_items(self, n = 5):
-        output = self.inventory.head(n)
+    def top_items(self, n = None):
+        output = self.inventory
+        if n:
+            output = output.head(n)
+        
         output["Expiration Date"] = output["Expiration Date"].astype("string")
         output["Status"] = output["Status"].round("D").astype("string")
         return output.to_json(orient="split", index=False)
