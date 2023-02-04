@@ -20,17 +20,49 @@
 }
 
 .food-widget{
-    position: absolute;
-    left: 8rem;
-    width: 30rem;
+    left: 10rem;
+    bottom: 7rem;
+    position: relative;
+    display: inline-block;
+    width: 40rem;
+}
+
+.generate-button{
+    margin-top: 2rem;
+    margin-left: 10rem;
 }
 
 .fridge-image{
-    position: absolute;
-    right: 8rem;
+    left: 10rem;
+    display: inline-block;
+    position: relative;
     width: 30rem;
 }
 
 .content{
     margin-top: 15rem;
+    min-height: calc(60vh - 40px);
 }
+
+th{
+    padding-left: 2rem;
+}
+
+td{
+    padding: 0 2rem 0 2rem;
+}
+
+footer{
+    margin: 0;
+    background-color: #EDDBC7;
+    height: 15rem;
+}
+
+.links{
+    margin-left: 35rem;
+}
+
+.footer-link{
+    text-align: center;
+}
+
