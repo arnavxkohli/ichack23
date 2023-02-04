@@ -1,4 +1,3 @@
-# from sklearn import LinearRegression
 import pandas as pd
 from datetime import datetime
 
@@ -9,7 +8,7 @@ class user_data(object):
         # self.inventory.set_index('Item', inplace=True)
 
     # code to add new item to the dataframe
-    def add_data(self, item, quantity, exp_date, status):
+    def add_data(self, item, quantity, exp_date):
         # check if repeated item name
         if item in list(self.inventory["Item"]):
             item_id = 1
@@ -21,7 +20,7 @@ class user_data(object):
                             "Item": [item],
                             "Quantity": [quantity],
                             "Expiration Date": [exp_date],
-                            "Status": [status],
+                            "Status": [0], # we will update this when we call .update()
                             "Expired": [False]
                             })
         self.inventory = self.inventory.append(tmp, ignore_index=True)
@@ -64,11 +63,11 @@ class user_data(object):
         
 
 a = user_data()
-a.add_data("apple", 3, "15/11/2022", 0)
-a.add_data("apple", 4, "13/8/2022", 0)
-a.add_data("apple", 1, "15/11/2023", 0)
-a.add_data("apple", 3, "13/8/2022", 0)
+a.add_data("apple", 3, "15/11/2022")
+a.add_data("apple", 4, "13/8/2022")
+a.add_data("apple", 1, "15/11/2023")
+a.add_data("apple", 3, "13/8/2022")
 print(a.inventory)
-# a.del_data("apple1")
-# print(a.inventory)
+a.del_data("apple1")
+print(a.inventory)
 print(a.top_items())
