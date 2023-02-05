@@ -50,7 +50,7 @@ body{
 
 .container{
     margin-top: 10rem;
-    min-height: calc(80vh - 40px);
+    min-height: calc(50vh - 40px);
 }
 
 footer{
@@ -74,9 +74,13 @@ footer{
 
 .btn1{
     background-color: #400E32;
+    position: relative;
+    bottom: 270px;
+    left: 65px;
     color: #F2921D;
-    margin-right: 18rem;
     font-size: 24px;
+    margin-right: 8rem;
+    
 }
 
 .btn1:hover{
@@ -111,11 +115,10 @@ td{
 
 .fridge{
     left: 0.1%;
-    height: 400px;
-    width: 400px;
+    height: 500px;
+    width: 500px;
     position: relative;
-    top: 35%;
-    margin-right: 700px;
+    bottom: 120px;
     z-index: -1;
 }
 
@@ -146,19 +149,6 @@ a{
     bottom: 50px;
 }
 
-.scroll{
-    position: relative;
-    color: black;
-    bottom: 50px;
-    height: 300px;
-    width: 470px;
-    overflow-y: auto;
-}
-
-.scroll::-webkit-scrollbar{
-    display: none;
-}
-
 .nav-link-active{
     color: rgba(255, 255, 0, 0.713);
 }
@@ -174,7 +164,8 @@ h1 {
   .btn2{
     background-color: #F2921D;
     color: #400E32;
-    margin-top: 3rem;
+    position: relative;
+    bottom: -40px;
     font-size: 24px;
     margin-right: 0;
   }
