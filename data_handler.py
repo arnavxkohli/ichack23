@@ -55,9 +55,8 @@ class user_data(object):
     def top_items(self, n = None):
         output = self.inventory
         if n:
-            output = output["Item"].head(n)
-        
-        return output.to_json(orient="split", index=False)
+            return list(output.head(n)["Item"].values)
+        return list(output["Item"].values)
     
     # returns a json of items
     def items(self):
@@ -71,5 +70,5 @@ a.add_data("apple",5,None,"12-11-2022")
 a.add_data("crisps",5,"pack","12-6-2023")
 a.add_data("beef",1000,"g","12-2-2023")
 a.add_data("chicken",500,"g","8-2-2023")
-print(a.inventory)
-print(a.items())
+# print(a.inventory)
+print(a.top_items(4))
