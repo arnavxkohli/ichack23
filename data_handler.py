@@ -28,7 +28,7 @@ class user_data(object):
 
     def update(self):
         # sort the dataframe by exp_date (use date_time module)
-        self.inventory['Expiration Date'] = pd.to_datetime(self.inventory['Expiration Date'])
+        self.inventory['Expiration Date'] = pd.to_datetime(self.inventory['Expiration Date'], dayfirst=True)
         self.inventory.sort_values(by='Expiration Date', inplace = True)
 
         # update item expiry status
@@ -54,9 +54,22 @@ class user_data(object):
     
     def top_items(self, n = None):
         output = self.inventory
-        # output["Expiration Date"] = output["Expiration Date"].astype("string")
-        # output["Status"] = output["Status"].astype("string")
         if n:
             output = output["Item"].head(n)
         
         return output.to_json(orient="split", index=False)
+    
+    # returns a json of items
+    def items(self):
+        output = self.inventory
+        output["Expiration Date"] = output["Expiration Date"].astype("string")
+        output["Status"] = output["Status"].astype("string")
+        return output.to_json(orient="table", index=False)
+
+a=user_data()
+a.add_data("apple",5,None,"12-11-2022")
+a.add_data("crisps",5,"pack","12-6-2023")
+a.add_data("beef",1000,"g","12-2-2023")
+a.add_data("chicken",500,"g","8-2-2023")
+print(a.inventory)
+print(a.items())
