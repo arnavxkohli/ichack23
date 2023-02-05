@@ -14,7 +14,7 @@ body{
 }
 
 .nav-item{
-    padding: 0 2rem 0 2rem;
+    padding: 0 2rem 0 8rem;
 }
 
 .nav-link{
@@ -32,6 +32,11 @@ body{
     color: #F2921D;
 }
 
+.home{
+    font-size: 27px;
+    font-family: 'Courgette', cursive;
+}
+
 .navbar-brand:hover{
     /* font-size: 3.1rem; */
     color: #f2b21d;
@@ -46,10 +51,6 @@ body{
 .container{
     margin-top: 10rem;
     min-height: calc(80vh - 40px);
-}
-
-th{
-    padding-left: 1rem;
 }
 
 footer{
@@ -72,24 +73,29 @@ footer{
     color: white;
 }
 
-.btn{
+.btn1{
     background-color: #400E32;
     color: #F2921D;
     margin-right: 18rem;
     font-size: 24px;
 }
 
-.btn:hover{
+.btn1:hover{
     background-color: #F2921D;
     color: #400E32;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 2px 12px 15px #613a0c;
+    transform: translateY(-2px);
 }
 
 th{
-    padding:0 0 0 4rem;
+    padding: 0 0 0 5rem;
+    font-weight: 900;
+    font-size: 16px;
 }
 
 td{
+    font-weight: 300;
+    font-size: 13px;
     padding: 2rem 1rem 0 2rem;
     text-align: center;
 }
@@ -97,7 +103,7 @@ td{
 .notes{
     left: 0.1%;
     height: 700px;
-    width: 600px;
+    width: 700px;
     position: absolute;
     top: 17%;
     z-index: -1;
@@ -132,6 +138,7 @@ a{
 
 .scroll{
     position: relative;
+    color: black;
     bottom: 50px;
     height: 300px;
     width: 470px;
@@ -141,4 +148,49 @@ a{
 .scroll::-webkit-scrollbar{
     display: none;
 }
+
+.nav-link-active{
+    color: rgba(255, 255, 0, 0.713);
+}
+
+h1 {
+    color: #F2921D;
+    font-family: monospace;  /* Keeps the content on a single line */
+    margin: 3rem;
+    letter-spacing: .15em; /* Adjust as needed */
+  }
+
+
+  .btn2{
+    background-color: #F2921D;
+    color: #400E32;
+    margin-top: 3rem;
+    font-size: 24px;
+    margin-right: 0;
+  }
+
+  .btn2:hover{
+    background-color: #400E32;
+    color: #F2921D;
+    box-shadow: 2px 12px 15px #999;
+    transform: translateY(-2px);
+  }
+
+  .card{
+    margin: 0 3rem 0 3rem;
+  }
+
+  .card:hover{
+    box-shadow: 2px 12px 15px #999;
+    transform: translateY(-2px);
+  }
+
+  ::placeholder{
+    color: #999;
+  }
+
+
+  /* tr > .expire {
+    background-color: red;
+  } */
 
