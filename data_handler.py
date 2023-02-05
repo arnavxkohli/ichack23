@@ -60,14 +60,3 @@ class user_data(object):
         output["Expiration Date"] = output["Expiration Date"].astype("string")
         output["Status"] = output["Status"].astype("string")
         return output.to_json(orient="split", index=False)
-        
-
-a = user_data()
-a.add_data("apple", 3, "15/11/2022")
-a.add_data("apple", 4, "13/8/2022")
-a.add_data("apple", 1, "15/11/2023")
-a.add_data("apple", 3, "13/8/2022")
-print(a.inventory)
-a.del_data("apple1")
-print(a.inventory)
-print(a.top_items())
