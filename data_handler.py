@@ -28,7 +28,7 @@ class user_data(object):
 
     def update(self):
         # sort the dataframe by exp_date (use date_time module)
-        self.inventory['Expiration Date'] = pd.to_datetime(self.inventory['Expiration Date'])
+        self.inventory['Expiration Date'] = pd.to_datetime(self.inventory['Expiration Date'], dayfirst=True)
         self.inventory.sort_values(by='Expiration Date', inplace = True)
 
         # update item expiry status
@@ -54,9 +54,24 @@ class user_data(object):
     
     def top_items(self, n = None):
         output = self.inventory
-        # output["Expiration Date"] = output["Expiration Date"].astype("string")
-        # output["Status"] = output["Status"].astype("string")
         if n:
-            output = output["Item"].head(n)
-        
-        return output.to_json(orient="split", index=False)
+            return list(output.head(n)["Item"].values)
+        return list(output["Item"].values)
+    
+    # returns a json of items
+    def items(self):
+        output = self.inventory
+        output["Expiration Date"] = output["Expiration Date"].astype("string")
+        output["Status"] = output["Status"].astype("string")
+        return output.to_json(orient="table", index=False)
+
+    # take json input, update the dataframe and return a list of top items for recipes
+    def parse_input(self, data, n=8):
+        [item, quantity, unit, exp_date] = [data[key] for key in ["Item","Quantity","Unit","Expiration Date"]]
+        self.add_data(item, quantity, unit, exp_date)
+        return self.top_items(n)
+
+# a=user_data()
+# print(a.parse_input({"Item":"apple","Quantity":6,"Unit":"kg","Expiration Date":"06-12-2022"}))
+# print(a.inventory)
+# print(a.top_items(4))

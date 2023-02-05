@@ -19,7 +19,7 @@ img = cv2.GaussianBlur(img, (3,3), cv2.BORDER_DEFAULT)
 
 img = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
 
-kernel = np.ones((2,2),np.uint8)
+kernel = np.ones((1,1),np.uint8)
 img = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
 
 img = cv2.Canny(img, 100, 200)

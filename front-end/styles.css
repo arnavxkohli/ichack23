@@ -100,7 +100,9 @@ td{
     text-align: center;
 }
 
-.notes{
+.blob{
+    opacity: 0.5
+;
     left: 0.1%;
     height: 700px;
     width: 700px;
