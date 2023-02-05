@@ -53,7 +53,7 @@ class user_data(object):
             self.del_data(item)
     
     def top_items(self, n = None):
-        output = self.inventory
+        output = self.inventory[self.inventory["Expired"] == False]
         if n:
             return list(output.head(n)["Item"].values)
         return list(output["Item"].values)
@@ -72,6 +72,6 @@ class user_data(object):
         return self.top_items(n)
 
 # a=user_data()
-# print(a.parse_input({"Item":"apple","Quantity":6,"Unit":"kg","Expiration Date":"06-12-2022"}))
+# print(a.parse_input({"Item":"apple","Quantity":6,"Unit":"kg","Expiration Date":"06-12-2023"}))
 # print(a.inventory)
 # print(a.top_items(4))
