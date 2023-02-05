@@ -1,6 +1,6 @@
 body{
     background-color: #Fef4e8;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-weight: 900;
 }
 
@@ -94,6 +94,7 @@ th{
     padding: 0 0 0 5rem;
     font-weight: 900;
     font-size: 16px;
+    text-align: center;
 }
 
 td{
@@ -179,19 +180,30 @@ h1 {
 
   .card{
     margin: 0 3rem 0 3rem;
+    box-shadow: 2px 12px 15px #999;
   }
 
-  .card:hover{
+  /* .card:hover{
     box-shadow: 2px 12px 15px #999;
     transform: translateY(-2px);
-  }
+  } */
 
   ::placeholder{
     color: #999;
+    font-weight: 300;
   }
 
+  .card-title{
+    font-weight:900;
+  }
 
-  /* tr > .expire {
-    background-color: red;
-  } */
+  .form-label{
+    font-weight: 500;
+  }
+
+  .form-control:hover{
+    background-color: #ffe9b9;
+    color: black;
+  }
+
 
