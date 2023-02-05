@@ -49,7 +49,7 @@ body{
 }
 
 th{
-    padding-left: 2rem;
+    padding-left: 1rem;
 }
 
 footer{
@@ -90,7 +90,7 @@ th{
 }
 
 td{
-    padding: 2rem 0 0 4rem;
+    padding: 2rem 1rem 0 2rem;
     text-align: center;
 }
 
