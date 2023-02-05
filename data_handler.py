@@ -65,10 +65,13 @@ class user_data(object):
         output["Status"] = output["Status"].astype("string")
         return output.to_json(orient="table", index=False)
 
-a=user_data()
-a.add_data("apple",5,None,"12-11-2022")
-a.add_data("crisps",5,"pack","12-6-2023")
-a.add_data("beef",1000,"g","12-2-2023")
-a.add_data("chicken",500,"g","8-2-2023")
+    # take json input, update the dataframe and return a list of top items for recipes
+    def parse_input(self, data, n=8):
+        [item, quantity, unit, exp_date] = [data[key] for key in ["Item","Quantity","Unit","Expiration Date"]]
+        self.add_data(item, quantity, unit, exp_date)
+        return self.top_items(n)
+
+# a=user_data()
+# print(a.parse_input({"Item":"apple","Quantity":6,"Unit":"kg","Expiration Date":"06-12-2022"}))
 # print(a.inventory)
-print(a.top_items(4))
+# print(a.top_items(4))
