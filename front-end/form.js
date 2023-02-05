@@ -25,9 +25,4 @@ submit.addEventListener('click', function(){
     object = {};
     
 })
-// table.innerHTML = table.innerHTML + '<tr><td>' + object['Item'] + '</td><td>' + quant + '</td><td>' + days + '</td></tr';
-
-// fillTable(object);
-
-console.log(table.innerHTML);
 

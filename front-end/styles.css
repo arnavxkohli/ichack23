@@ -215,4 +215,14 @@ h1 {
     color: black;
   }
 
+.container-form{
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  min-height: calc(80vh - 40px);
 
+}
+
+.btn-sub{
+    position: relative;
+    left: 230px;
+}
