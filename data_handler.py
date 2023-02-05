@@ -1,14 +1,13 @@
 import pandas as pd
 from datetime import datetime
 
-column_names = ["Item","Quantity","Expiration Date", "Status", "Expired"]
+column_names = ["Item","Quantity","Unit","Expiration Date","Status","Expired"]
 class user_data(object):
     def __init__(self):
         self.inventory = pd.DataFrame(columns=column_names)
-        # self.inventory.set_index('Item', inplace=True)
 
     # code to add new item to the dataframe
-    def add_data(self, item, quantity, exp_date):
+    def add_data(self, item, quantity, unit, exp_date):
         # check if repeated item name
         if item in list(self.inventory["Item"]):
             item_id = 1
@@ -19,6 +18,7 @@ class user_data(object):
         tmp = pd.DataFrame({
                             "Item": [item],
                             "Quantity": [quantity],
+                            "Unit": [unit if unit != None else "unit"],
                             "Expiration Date": [exp_date],
                             "Status": [0], # we will update this when we call .update()
                             "Expired": [False]
@@ -45,7 +45,7 @@ class user_data(object):
         self.update()
 
     def use_quantity(self, item, quantity_used):
-        quantity = self.inventory.loc[self.inventory["Item"]==item]["Quantity"]
+        quantity = self.inventory.loc[self.inventory["Item"]==item]["Quantity"].values
         new_quantity = quantity-quantity_used
         if new_quantity > 0:
             self.mod_data(item, "Quantity", new_quantity)
@@ -54,9 +54,9 @@ class user_data(object):
     
     def top_items(self, n = None):
         output = self.inventory
+        # output["Expiration Date"] = output["Expiration Date"].astype("string")
+        # output["Status"] = output["Status"].astype("string")
         if n:
-            output = output.head(n)
+            output = output["Item"].head(n)
         
-        output["Expiration Date"] = output["Expiration Date"].astype("string")
-        output["Status"] = output["Status"].astype("string")
         return output.to_json(orient="split", index=False)
