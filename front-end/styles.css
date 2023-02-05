@@ -208,12 +208,13 @@ h1 {
 
 .container-form{
   margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   min-height: calc(80vh - 40px);
 
 }
 
 .btn-sub{
     position: relative;
+    bottom: 4px;
     left: 230px;
 }
