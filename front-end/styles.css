@@ -1,5 +1,7 @@
 body{
-    background-color: #f9f5ed;
+    background-color: #Fef4e8;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 900;
 }
 
 .links{
@@ -42,16 +44,12 @@ body{
 }
 
 .container{
-    margin-top: 15rem;
-    min-height: calc(60vh - 40px);
+    margin-top: 10rem;
+    min-height: calc(80vh - 40px);
 }
 
 th{
     padding-left: 2rem;
-}
-
-td{
-    padding: 0 2rem 0 2rem;
 }
 
 footer{
@@ -75,20 +73,34 @@ footer{
 }
 
 .btn{
-    background-color: rgb(52, 58, 64);
-    margin-right: 12rem;
+    background-color: #400E32;
+    color: #F2921D;
+    margin-right: 18rem;
+    font-size: 24px;
 }
 
 .btn:hover{
+    background-color: #F2921D;
+    color: #400E32;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 th{
-    padding: 0 2rem 0 2rem;
+    padding:0 0 0 4rem;
 }
 
 td{
-    padding: 2rem 2rem 2rem 2rem;
+    padding: 2rem 0 0 4rem;
+    text-align: center;
+}
+
+.notes{
+    left: 0.1%;
+    height: 700px;
+    width: 600px;
+    position: absolute;
+    top: 17%;
+    z-index: -1;
 }
 
 .company-name{
@@ -111,5 +123,22 @@ a{
 
 .fa-regular{
     color: #F2921D;
+}
+
+.fridge-image{
+    position: relative;
+    bottom: 50px;
+}
+
+.scroll{
+    position: relative;
+    bottom: 50px;
+    height: 300px;
+    width: 470px;
+    overflow-y: auto;
+}
+
+.scroll::-webkit-scrollbar{
+    display: none;
 }
 
