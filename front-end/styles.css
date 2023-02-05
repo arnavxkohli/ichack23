@@ -101,13 +101,22 @@ td{
 }
 
 .blob{
-    opacity: 0.5
-;
+    opacity: 0.5;
     left: 0.1%;
     height: 700px;
     width: 700px;
     position: absolute;
     top: 17%;
+    z-index: -1;
+}
+
+.fridge{
+    left: 0.1%;
+    height: 400px;
+    width: 400px;
+    position: relative;
+    top: 35%;
+    margin-right: 700px;
     z-index: -1;
 }
 
